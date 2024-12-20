@@ -28,7 +28,7 @@ const main = async () => {
       router(app);
       app.listen(port, () =>
         console.log(
-          `Server listening on port ${port}: http://localhost:${port}`
+          `Server listening on port ${port}: https://ltech-back-ts-mongodb.onrender.com`
         )
       );
     })

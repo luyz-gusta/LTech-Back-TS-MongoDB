@@ -25,7 +25,7 @@ const produtoSchema = new Schema<IProdutoDocument>({
       return now;
     },
   },
-  marca: { type: Schema.Types.ObjectId, ref: "Marca", required: true },
+  marca: { type: Schema.Types.ObjectId, ref: "Marca" },
   categoria: { type: Schema.Types.ObjectId, ref: "Categoria", required: true },
   usuario: { type: Schema.Types.ObjectId, ref: "Usuario", required: true },
 });

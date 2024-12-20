@@ -2,6 +2,7 @@ import UsuarioModel from "../../../../domain/model/usuario.model";
 import UsuarioRepository from "../../../../infra/repositories/usuario-repository";
 import {
   errorBadRequest,
+  errorNotFound,
   handleDatabaseError,
   statusUpdated,
   updated,
@@ -28,6 +29,10 @@ export class UpdateStatusUsuarioController implements IController {
         user = await this.usuarioRepository.disable(id);
       } else {
         user = await this.usuarioRepository.enable(id);
+      }
+
+      if(!user){
+        return errorNotFound()
       }
 
       const now = new Date();

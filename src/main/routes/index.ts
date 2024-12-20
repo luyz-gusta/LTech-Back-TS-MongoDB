@@ -1,6 +1,7 @@
 import { Application, Request, Response } from "express";
 import usuarioRouter from "./usuarioRoutes";
 import marcaRouter from "./marcaRoutes";
+import categoriaRouter from "./categoriaRoutes";
 
 const router = (app: Application) => {
   app.route("/").get((_req: Request, res: Response) => {
@@ -9,7 +10,8 @@ const router = (app: Application) => {
 
   app.use([
     usuarioRouter,
-    marcaRouter
+    marcaRouter,
+    categoriaRouter
   ])
 };
 

@@ -1,15 +1,15 @@
-import MarcaRepository from "../../../../infra/repositories/marca-repository";
+import CategoriaRepository from "../../../../infra/repositories/categoria-repository";
 import {
   errorBadRequest,
   errorNotFound,
   handleDatabaseError,
-  updated,
+  updated
 } from "../../../helpers/http-helpers";
 import { IController } from "../../../protocols/controller";
 import { HttpRequest, HttpResponse } from "../../../protocols/http";
 
-export class UpdateStatusMarcaController implements IController {
-  constructor(private readonly marcaRepository: MarcaRepository) {}
+export class UpdateStatusCategoriaController implements IController {
+  constructor(private readonly categoriaRepository: CategoriaRepository) {}
 
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
@@ -20,24 +20,24 @@ export class UpdateStatusMarcaController implements IController {
         return errorBadRequest({ error: "ID inválido" });
       }
 
-      let mask;
+      let category;
 
       if (status == "desativar") {
-        mask = await this.marcaRepository.disable(id);
+        category = await this.categoriaRepository.disable(id);
       } else {
-        mask = await this.marcaRepository.enable(id);
+        category = await this.categoriaRepository.enable(id);
       }
 
-      if (!mask) {
-        return errorNotFound();
+      if(!category){
+        return errorNotFound()
       }
 
       const now = new Date();
       now.setHours(now.getHours() - 3);
-      mask.dataAtualizacao = now;
-      await this.marcaRepository.update(id, mask);
+      category.dataAtualizacao = now 
+      await this.categoriaRepository.update(id, category);
 
-      return updated(mask);
+      return updated(category);
     } catch (error) {
       console.log(error);
       return handleDatabaseError(error);

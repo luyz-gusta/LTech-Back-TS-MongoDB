@@ -13,6 +13,8 @@ import { GetAllMarcasController } from "../../presentation/controllers/v1/Marca/
 import { CreateMarcaController } from "../../presentation/controllers/v1/Marca/CreateMarcaController";
 import { GetMarcasController } from "../../presentation/controllers/v1/Marca/GetMarcasController";
 import { UpdateMarcaController } from "../../presentation/controllers/v1/Marca/UpdateMarcaController";
+import { UpdateStatusMarcaController } from "../../presentation/controllers/v1/Marca/UpdateStatusMarcaController";
+import { GetByIdMarcasController } from "../../presentation/controllers/v1/Marca/GetByIdMarcasController";
 
 const marcaRouter = Router();
 const marcaRepository = new MarcaRepository();
@@ -31,6 +33,10 @@ marcaRouter.get(
   "/marcas",
   adaptRoute(new GetMarcasController(marcaRepository))
 );
+marcaRouter.get(
+  "/marcas/:id",
+  adaptRoute(new GetByIdMarcasController(marcaRepository))
+);
 marcaRouter.post(
   "/marcas",
   validateBody,
@@ -43,7 +49,7 @@ marcaRouter.put(
 );
 marcaRouter.put(
   "/marcas/:id/:status",
-  adaptRoute(new UpdateMarcaController(marcaRepository))
+  adaptRoute(new UpdateStatusMarcaController(marcaRepository))
 );
 
 export default marcaRouter;
