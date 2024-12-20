@@ -1,15 +1,16 @@
-import UsuarioRepository from "../../../../infra/repositories/usuario-repository";
+import MarcaRepository from "../../../../infra/repositories/marca-repository";
+import ProdutoRepository from "../../../../infra/repositories/produto-repository";
 import {
   errorBadRequest,
   errorNotFound,
   handleDatabaseError,
-  updated
+  updated,
 } from "../../../helpers/http-helpers";
 import { IController } from "../../../protocols/controller";
 import { HttpRequest, HttpResponse } from "../../../protocols/http";
 
-export class UpdateStatusUsuarioController implements IController {
-  constructor(private readonly usuarioRepository: UsuarioRepository) {}
+export class UpdateStatusProdutoController implements IController {
+  constructor(private readonly produtoRepository: ProdutoRepository) {}
 
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
@@ -20,24 +21,24 @@ export class UpdateStatusUsuarioController implements IController {
         return errorBadRequest({ error: "ID inválido" });
       }
 
-      let user;
+      let product;
 
       if (status == "desativar") {
-        user = await this.usuarioRepository.disable(id);
+        product = await this.produtoRepository.disable(id);
       } else {
-        user = await this.usuarioRepository.enable(id);
+        product = await this.produtoRepository.enable(id);
       }
 
-      if(!user){
-        return errorNotFound()
+      if (!product) {
+        return errorNotFound();
       }
 
       const now = new Date();
       now.setHours(now.getHours() - 3);
-      user.dataAtualizacao = now 
-      await this.usuarioRepository.update(id, user);
+      product.dataAtualizacao = now;
+      await this.produtoRepository.update(id, product);
 
-      return updated(user);
+      return updated(product);
     } catch (error) {
       console.log(error);
       return handleDatabaseError(error);

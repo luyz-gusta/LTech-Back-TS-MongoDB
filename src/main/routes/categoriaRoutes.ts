@@ -5,16 +5,16 @@ import {
   Response,
   Router,
 } from "express";
-import handleYupValidationError from "../../presentation/middlewares/validationError";
-import marcaSchema from "../../infra/schemas/marcaSchema";
-import { adaptRoute } from "../adapters/express.adapter";
 import CategoriaRepository from "../../infra/repositories/categoria-repository";
-import { GetAllCategoriasController } from "../../presentation/controllers/v1/Categoria/GetAllCategoriasController";
-import { GetCategoriasController } from "../../presentation/controllers/v1/Categoria/GetCategoriasController";
-import { GetByIdCategoriaController } from "../../presentation/controllers/v1/Categoria/GetByIdCategoriaController";
+import categoriaSchema from "../../infra/schemas/categoriaSchema";
 import { CreateCategoriaController } from "../../presentation/controllers/v1/Categoria/CreateCategoriaController";
+import { GetAllCategoriasController } from "../../presentation/controllers/v1/Categoria/GetAllCategoriasController";
+import { GetByIdCategoriaController } from "../../presentation/controllers/v1/Categoria/GetByIdCategoriaController";
+import { GetCategoriasController } from "../../presentation/controllers/v1/Categoria/GetCategoriasController";
 import { UpdateCategoriaController } from "../../presentation/controllers/v1/Categoria/UpdateCategoriasController";
 import { UpdateStatusCategoriaController } from "../../presentation/controllers/v1/Categoria/UpdateStatusCategoriasController";
+import handleYupValidationError from "../../presentation/middlewares/validationError";
+import { adaptRoute } from "../adapters/express.adapter";
 
 const categoriaRouter = Router();
 const categoriaRepository = new CategoriaRepository();
@@ -23,7 +23,7 @@ const validateBody: RequestHandler = async (
   req: Request,
   res: Response,
   next: NextFunction
-) => handleYupValidationError(marcaSchema, req, res, next);
+) => handleYupValidationError(categoriaSchema, req, res, next);
 
 categoriaRouter.get(
   "/categorias/all",

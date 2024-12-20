@@ -1,9 +1,9 @@
 import UsuarioModel from "../../../../domain/model/usuario.model";
 import UsuarioRepository from "../../../../infra/repositories/usuario-repository";
 import {
-    errorBadRequest,
-    handleDatabaseError,
-    updated
+  errorBadRequest,
+  handleDatabaseError,
+  updated
 } from "../../../helpers/http-helpers";
 import { keyHash } from "../../../helpers/validation-password";
 import { IController } from "../../../protocols/controller";
