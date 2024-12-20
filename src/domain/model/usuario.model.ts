@@ -6,7 +6,7 @@ export default interface UsuarioModel {
   nome: string;
   usuario: string;
   email: string;
-  password: string;
+  senha: string;
   ativo?: boolean;
   ultimoLogin?: Date | null;
   dataCadastro?: Date;

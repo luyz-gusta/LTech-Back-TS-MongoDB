@@ -4,8 +4,8 @@ import MarcaModel from "../model/marca.model";
 export interface IMarcaDocument extends MarcaModel, Document {}
 
 const marcaSchema = new Schema({
-  nome: { type: String, required: true },
-  usuario: { type: Schema.Types.ObjectId, ref: "Usuario" },
+  nome: { type: String, required: true, unique: true },
+  usuario: { type: Schema.Types.ObjectId, ref: "Usuario", required: true },
   ativo: {
     type: Boolean,
     default: true,
@@ -28,6 +28,6 @@ const marcaSchema = new Schema({
   },
 });
 
-const Marca = mongoose.model<IMarcaDocument>('Marca', marcaSchema)
+const Marca = mongoose.model<IMarcaDocument>("Marca", marcaSchema);
 
 export default Marca;

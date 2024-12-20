@@ -4,8 +4,8 @@ import CategoriaModel from "../model/categoria.model";
 export interface ICategoriaDocument extends CategoriaModel, Document {}
 
 const categoriaSchema = new Schema({
-  nome: { type: String, required: true },
-  usuario: { type: Schema.Types.ObjectId, ref: "Usuario" },
+  nome: { type: String, required: true, unique: true },
+  usuario: { type: Schema.Types.ObjectId, ref: "Usuario", required: true },
   ativo: {
     type: Boolean,
     default: true,
@@ -28,6 +28,9 @@ const categoriaSchema = new Schema({
   },
 });
 
-const Categoria = mongoose.model<ICategoriaDocument>('Categoria', categoriaSchema)
+const Categoria = mongoose.model<ICategoriaDocument>(
+  "Categoria",
+  categoriaSchema
+);
 
 export default Categoria;

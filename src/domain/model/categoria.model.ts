@@ -1,10 +1,9 @@
 import { ObjectId } from "mongoose";
-import UsuarioModel from "./usuario.model";
 
 export default interface CategoriaModel {
   _id: ObjectId;
   nome: string;
-  usuario: UsuarioModel;
+  usuario: ObjectId;
   ativo?: boolean;
   dataCadastro?: Date;
   dataAtualizacao?: Date;

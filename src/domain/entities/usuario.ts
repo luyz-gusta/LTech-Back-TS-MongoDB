@@ -18,10 +18,6 @@ const usuarioSchema = new Schema({
     required: true,
     unique: true,
   },
-  password: {
-    type: String,
-    required: true,
-  },
   senha: {
     type: String,
     required: true,

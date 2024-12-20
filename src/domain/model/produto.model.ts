@@ -1,7 +1,4 @@
 import { ObjectId } from "mongoose";
-import UsuarioModel from "./usuario.model";
-import MarcaModel from "./marca.model";
-import CategoriaModel from "./categoria.model";
 
 export default interface ProdutoModel {
   _id: ObjectId;
@@ -12,7 +9,7 @@ export default interface ProdutoModel {
   ativo?: boolean;
   dataCadastro?: Date;
   dataAtualizacao?: Date;
-  marca: MarcaModel;
-  categoria: CategoriaModel;
-  usuario: UsuarioModel;
+  marca: ObjectId;
+  categoria: ObjectId;
+  usuario: ObjectId;
 }
