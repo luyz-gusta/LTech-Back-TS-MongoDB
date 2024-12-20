@@ -2,6 +2,7 @@ import { config } from "dotenv";
 import express, { Application } from "express";
 import cors from "cors";
 import mongoose from "mongoose";
+import router from "./main/routes";
 
 const main = async () => {
   config();
@@ -24,11 +25,16 @@ const main = async () => {
       `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_CLUESTER}/${process.env.MONGODB_DATABASE}?retryWrites=true&w=majority&appName=ClusterGlobal`
     )
     .then(() => {
-      app.listen(port, () => console.log(`Server listening on port ${port}`));
+      router(app);
+      app.listen(port, () =>
+        console.log(
+          `Server listening on port ${port}: http://localhost:${port}`
+        )
+      );
     })
     .catch((error) => {
       console.error("Error connecting to MongoDB:", error);
     });
 };
 
-main()
+main();
