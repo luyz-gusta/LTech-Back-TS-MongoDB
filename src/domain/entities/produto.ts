@@ -9,6 +9,7 @@ const produtoSchema = new Schema<IProdutoDocument>({
   preco: { type: Number, required: true },
   fotos: [{ type: String, required: true }],
   ativo: { type: Boolean, default: true },
+  estadoProduto: {type: String, required: true},
   dataCadastro: {
     type: Date,
     default: () => {

@@ -1,5 +1,5 @@
 import { ObjectId } from "mongoose";
-import { TipoUsuario } from "../../infra/types/tipoUsuario";
+import { TipoUsuario } from "../../infra/types/types-global";
 
 export default interface UsuarioModel {
   _id: ObjectId;

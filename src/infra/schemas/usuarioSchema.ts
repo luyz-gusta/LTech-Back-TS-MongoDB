@@ -1,7 +1,7 @@
 import * as yup from "yup";
 import { pt } from "yup-locale-pt";
 import UsuarioModel from "../../domain/model/usuario.model";
-import { TipoUsuario } from "../types/tipoUsuario";
+import { TipoUsuario } from "../types/types-global";
 
 yup.setLocale(pt);
 

@@ -1,4 +1,5 @@
 import { ObjectId } from "mongoose";
+import { EstadoProduto } from "../../infra/types/types-global";
 
 export default interface ProdutoModel {
   _id: ObjectId;
@@ -12,4 +13,5 @@ export default interface ProdutoModel {
   marca: ObjectId;
   categoria: ObjectId;
   usuario: ObjectId;
+  estadoProduto: EstadoProduto
 }
