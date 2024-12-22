@@ -11,7 +11,9 @@ const produtoSchema: yup.ObjectSchema<
 > = yup.object({
   nome: yup.string().required().min(3).max(50),
   descricao: yup.string().required().min(3),
-  preco: yup.number().required(),
+  precoVenda: yup.number().required(),
+  precoPromocao: yup.number().optional(),
+  qntdParcelas: yup.number().optional(),
   usuario: yup.mixed<ObjectId>().required(),
   marca: yup.mixed<ObjectId>().required(),
   categoria: yup.mixed<ObjectId>().required(),

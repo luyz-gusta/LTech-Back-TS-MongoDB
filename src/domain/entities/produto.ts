@@ -6,11 +6,13 @@ export interface IProdutoDocument extends ProdutoModel, Document {}
 const produtoSchema = new Schema<IProdutoDocument>({
   nome: { type: String, required: true },
   descricao: { type: String, required: true },
-  preco: { type: Number, required: true },
+  precoVenda: { type: Number, required: true },
+  precoPromocao: { type: Number },
   fotos: [{ type: String, required: true }],
   ativo: { type: Boolean, default: true },
   emEstoque: { type: Boolean, default: true },
-  estadoProduto: {type: String, required: true},
+  qntdParcelas: { type: Number, default: 1 },
+  estadoProduto: { type: String, required: true },
   dataCadastro: {
     type: Date,
     default: () => {

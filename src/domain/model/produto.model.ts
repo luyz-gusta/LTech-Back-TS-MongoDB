@@ -5,7 +5,9 @@ export default interface ProdutoModel {
   _id: ObjectId;
   nome: string;
   descricao: string;
-  preco: number;
+  precoVenda: number;
+  precoPromocao?: number;
+  qntdParcelas?: number;
   fotos: Array<string>;
   ativo?: boolean;
   emEstoque?: boolean;
