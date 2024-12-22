@@ -26,6 +26,7 @@ const produtoSchema = new Schema<IProdutoDocument>({
       return now;
     },
   },
+  destaque: { type: Boolean, default: false },
   marca: { type: Schema.Types.ObjectId, ref: "Marca" },
   categoria: { type: Schema.Types.ObjectId, ref: "Categoria", required: true },
   usuario: { type: Schema.Types.ObjectId, ref: "Usuario", required: true },

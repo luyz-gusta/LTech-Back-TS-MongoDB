@@ -16,6 +16,7 @@ const produtoSchema: yup.ObjectSchema<
   marca: yup.mixed<ObjectId>().required(),
   categoria: yup.mixed<ObjectId>().required(),
   dataAtualizacao: yup.date().optional(),
+  destaque: yup.boolean().optional(),
   estadoProduto: yup.mixed<EstadoProduto>().required(),
   fotos: yup
     .array()

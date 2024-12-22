@@ -13,5 +13,6 @@ export default interface ProdutoModel {
   marca: ObjectId;
   categoria: ObjectId;
   usuario: ObjectId;
-  estadoProduto: EstadoProduto
+  estadoProduto: EstadoProduto,
+  destaque?: boolean
 }
