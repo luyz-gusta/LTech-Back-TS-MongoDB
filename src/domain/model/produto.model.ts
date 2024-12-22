@@ -8,6 +8,7 @@ export default interface ProdutoModel {
   preco: number;
   fotos: Array<string>;
   ativo?: boolean;
+  emEstoque?: boolean;
   dataCadastro?: Date;
   dataAtualizacao?: Date;
   marca: ObjectId;
