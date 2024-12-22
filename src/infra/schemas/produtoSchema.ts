@@ -12,7 +12,7 @@ const produtoSchema: yup.ObjectSchema<
   nome: yup.string().required().min(3).max(50),
   descricao: yup.string().required().min(3),
   precoVenda: yup.number().required(),
-  precoPromocao: yup.number().optional(),
+  precoPromocao: yup.number().required().nullable(),
   qntdParcelas: yup.number().optional(),
   usuario: yup.mixed<ObjectId>().required(),
   marca: yup.mixed<ObjectId>().required(),

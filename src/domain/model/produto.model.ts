@@ -6,7 +6,7 @@ export default interface ProdutoModel {
   nome: string;
   descricao: string;
   precoVenda: number;
-  precoPromocao?: number;
+  precoPromocao?: number | null;
   qntdParcelas?: number;
   fotos: Array<string>;
   ativo?: boolean;

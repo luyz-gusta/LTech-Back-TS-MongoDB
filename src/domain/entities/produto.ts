@@ -7,7 +7,7 @@ const produtoSchema = new Schema<IProdutoDocument>({
   nome: { type: String, required: true },
   descricao: { type: String, required: true },
   precoVenda: { type: Number, required: true },
-  precoPromocao: { type: Number },
+  precoPromocao: { type: Number, default: null },
   fotos: [{ type: String, required: true }],
   ativo: { type: Boolean, default: true },
   emEstoque: { type: Boolean, default: true },
