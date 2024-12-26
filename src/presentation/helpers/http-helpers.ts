@@ -31,11 +31,11 @@ export const loginSuccessful = (data: any): HttpResponse => {
   };
 };
 
-export const invalidEmail = (): HttpResponse => {
+export const invalidUser = (): HttpResponse => {
   return {
     statusCode: 401,
     body: {
-      message: "Email inválido!",
+      message: "Usuário inválido!",
     },
   };
 };

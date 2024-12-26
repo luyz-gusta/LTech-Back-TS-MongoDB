@@ -27,15 +27,11 @@ const usuarioSchema: yup.ObjectSchema<
 });
 
 export const loginSchema = yup.object({
-  email: yup
+  usuario: yup
     .string()
     .defined()
     .required()
-    .max(255)
-    .matches(
-      /^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/gm,
-      "email inválido"
-    ),
+    .max(255),
   senha: yup.string().defined().required().max(255).min(6),
 });
 
