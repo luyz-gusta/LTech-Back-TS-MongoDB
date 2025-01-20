@@ -69,6 +69,15 @@ export const updated = (data: any): HttpResponse => {
   };
 };
 
+export const deleted = (): HttpResponse => {
+  return {
+    statusCode: 200,
+    body: {
+      message: "Item deletado com sucesso!",
+    },
+  };
+};
+
 export const errorBadRequest = (error?: any): HttpResponse => {
   return {
     statusCode: 400,

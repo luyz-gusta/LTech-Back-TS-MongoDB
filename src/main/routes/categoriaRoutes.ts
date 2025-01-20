@@ -15,6 +15,7 @@ import { UpdateCategoriaController } from "../../presentation/controllers/v1/Cat
 import { UpdateStatusCategoriaController } from "../../presentation/controllers/v1/Categoria/UpdateStatusCategoriasController";
 import handleYupValidationError from "../../presentation/middlewares/validationError";
 import { adaptRoute } from "../adapters/express.adapter";
+import { DeleteCategoriaController } from "../../presentation/controllers/v1/Categoria/DeleteCategoriaController";
 
 const categoriaRouter = Router();
 const categoriaRepository = new CategoriaRepository();
@@ -50,6 +51,10 @@ categoriaRouter.put(
 categoriaRouter.put(
   "/categorias/:id/:status",
   adaptRoute(new UpdateStatusCategoriaController(categoriaRepository))
+);
+categoriaRouter.delete(
+  "/categorias/:id",
+  adaptRoute(new DeleteCategoriaController(categoriaRepository))
 );
 
 export default categoriaRouter;

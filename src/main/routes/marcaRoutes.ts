@@ -15,6 +15,7 @@ import { GetMarcasController } from "../../presentation/controllers/v1/Marca/Get
 import { UpdateMarcaController } from "../../presentation/controllers/v1/Marca/UpdateMarcaController";
 import { UpdateStatusMarcaController } from "../../presentation/controllers/v1/Marca/UpdateStatusMarcaController";
 import { GetByIdMarcasController } from "../../presentation/controllers/v1/Marca/GetByIdMarcasController";
+import { DeleteMarcaController } from "../../presentation/controllers/v1/Marca/DeleteMarcaController";
 
 const marcaRouter = Router();
 const marcaRepository = new MarcaRepository();
@@ -50,6 +51,10 @@ marcaRouter.put(
 marcaRouter.put(
   "/marcas/:id/:status",
   adaptRoute(new UpdateStatusMarcaController(marcaRepository))
+);
+marcaRouter.delete(
+  "/marcas/:id",
+  adaptRoute(new DeleteMarcaController(marcaRepository))
 );
 
 export default marcaRouter;

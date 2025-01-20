@@ -15,6 +15,7 @@ import { GetByIdProdutoController } from "../../presentation/controllers/v1/Prod
 import { GetProdutosController } from "../../presentation/controllers/v1/Produto/GetProdutosController";
 import { UpdateProdutoController } from "../../presentation/controllers/v1/Produto/UpdateProdutoController";
 import { UpdateStatusProdutoController } from "../../presentation/controllers/v1/Produto/UpdateStatusProdutoController";
+import { DeleteProdutoController } from "../../presentation/controllers/v1/Produto/DeleteProdutoController";
 
 const produtoRouter = Router();
 const produtoRepository = new ProdutoRepository();
@@ -55,6 +56,11 @@ produtoRouter.get(
 produtoRouter.get(
   "/produtos",
   adaptRoute(new GetProdutosController(produtoRepository))
+);
+
+produtoRouter.delete(
+  "/produtos/:id",
+  adaptRoute(new DeleteProdutoController(produtoRepository))
 );
 
 
