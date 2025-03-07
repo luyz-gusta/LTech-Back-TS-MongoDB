@@ -23,7 +23,7 @@ const produtoSchema: yup.ObjectSchema<
   estadoProduto: yup.mixed<EstadoProduto>().required(),
   fotos: yup
     .array()
-    .of(yup.string().url("Cada foto deve ser uma URL válida").required())
+    .of(yup.string().required())
     .min(1, "É necessário pelo menos uma foto")
     .required("A lista de fotos é obrigatória"),
 });

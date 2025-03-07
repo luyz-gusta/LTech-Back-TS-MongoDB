@@ -16,6 +16,7 @@ import { GetProdutosController } from "../../presentation/controllers/v1/Produto
 import { UpdateProdutoController } from "../../presentation/controllers/v1/Produto/UpdateProdutoController";
 import { UpdateStatusProdutoController } from "../../presentation/controllers/v1/Produto/UpdateStatusProdutoController";
 import { DeleteProdutoController } from "../../presentation/controllers/v1/Produto/DeleteProdutoController";
+import { upload } from "../../presentation/config/upload";
 
 const produtoRouter = Router();
 const produtoRepository = new ProdutoRepository();
@@ -29,6 +30,7 @@ const validateBody: RequestHandler = async (
 produtoRouter.post(
   "/produtos",
   validateBody,
+  upload.array("fotos"),
   adaptRoute(new CreateProdutoController(produtoRepository))
 );
 
@@ -62,7 +64,5 @@ produtoRouter.delete(
   "/produtos/:id",
   adaptRoute(new DeleteProdutoController(produtoRepository))
 );
-
-
 
 export default produtoRouter;
